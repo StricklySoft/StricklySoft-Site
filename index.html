@@ -1546,12 +1546,12 @@ window.closeModal = closeModal;</script>
 </style>
 
 <div class="contact-form-wrapper">
-  <form class="contact-form" action="https://formspree.io/f/mgvkbbyg" method="POST" return true;">
+  <form class="contact-form" action="https://formspree.io/f/mgvkbbyg" method="POST" onsubmit="showConfirmation(); return true;">
     <input type="text" name="name" placeholder="Your name" required>
     <input type="email" name="email" placeholder="Your email" required>
     <textarea name="message" placeholder="Your message" required rows="4"></textarea>
     <button type="submit">Send Message</button>
-    <div class="confirmation-message" id="confirmation">Thank you for your message! One of our agents will be in touch with you soon.</div>
+    <div class="confirmation-message" id="confirmation">Thank you for your message! One of our agents will get back to you soon.</div>
   </form>
 </div>
 
