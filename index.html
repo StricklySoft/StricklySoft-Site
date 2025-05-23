@@ -1502,12 +1502,68 @@ window.closeModal = closeModal;</script>
 <span class="chat-close" onclick="closeChatModal()">✕</span>
 <h3>Start a conversation</h3>
 <p>Have questions? Reach out and we'll get back to you soon.</p>
-<form aria-label="Contact form" lang="en">
-<input placeholder="Your name" required="" type="text"/>
-<input placeholder="Your email" required="" type="email"/>
-<textarea placeholder="Your message" required="" rows="4"></textarea>
-<button type="submit">Send Message</button>
-</form>
+
+
+<style>
+  .contact-form {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  .contact-form button {
+    background-color: #3e5ed3;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+  }
+  .contact-form button:hover {
+    background-color: #2e4cb1;
+  }
+  .confirmation-message {
+    display: none;
+    color: green;
+    font-weight: bold;
+    margin-top: 1rem;
+    text-align: center;
+  }
+</style>
+
+<div class="contact-form-wrapper">
+  <form class="contact-form" action="https://formspree.io/f/mgvkbbyg" method="POST" onsubmit="showConfirmation(); return true;">
+    <input type="text" name="name" placeholder="Your name" required>
+    <input type="email" name="email" placeholder="Your email" required>
+    <textarea name="message" placeholder="Your message" required rows="4"></textarea>
+    <button type="submit">Send Message</button>
+    <div class="confirmation-message" id="confirmation">Thanks for your message! We'll get back to you soon.</div>
+  </form>
+</div>
+
+<script>
+  function showConfirmation() {
+    setTimeout(() => {
+      document.getElementById('confirmation').style.display = 'block';
+    }, 300);
+  }
+</script>
+
+
 </div>
 </div>
 </body>
