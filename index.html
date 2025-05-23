@@ -1,0 +1,1514 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>StricklySoft</title>
+<link href="favicon.ico" rel="icon"/>
+<meta content="Enterprise SaaS solutions for operations, logistics, and workflow automation." name="description"/>
+<meta content="StricklySoft" property="og:title"/>
+<meta content="images/preview.png" property="og:image"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --orange: #ec6c31;
+      --yellow: #f2d23e;
+      --blue: #3e5ed3;
+      --pink: #d52a5f;
+      --purple: #7b3f94;
+      --sky: #44b8e1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, var(--blue), var(--purple));
+      color: #fff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #fff;
+      color: #000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 4px solid var(--orange);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 45px;
+    }
+
+    nav a {
+      margin-left: 30px;
+      text-decoration: none;
+      font-weight: 600;
+      color: var(--blue);
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 140px 20px 80px;
+      background: linear-gradient(to right, var(--sky), var(--purple));
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+
+    .hero h1 span {
+      display: block;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      padding: 60px;
+      justify-items: center;
+    }
+
+    .product-card {
+      background: #fff;
+      color: #000;
+      border-radius: 15px;
+      padding: 30px;
+      width: 100%;
+      max-width: 300px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .product-card img {
+      height: 120px;
+      margin-bottom: 5px;
+    }
+
+    .product-card p {
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    .coming-soon {
+      background: var(--orange);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      margin-top: 20px;
+      cursor: not-allowed;
+    }
+
+    footer {
+      background: #fff;
+      padding: 40px;
+      color: #444;
+      border-top: 4px solid var(--sky);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 180px;
+      margin-bottom: 20px;
+    }
+
+    .footer-section h4 {
+      margin-bottom: 10px;
+      color: var(--blue);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-section ul li a {
+      text-decoration: none;
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--orange);
+    }
+
+    footer p {
+      width: 100%;
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: 30px;
+      color: #888;
+    }
+  
+.modal-panel {
+  position: fixed;
+  top: 80px;
+  right: 40px;
+  width: 360px;
+  max-height: 80vh;
+  background: #fff;
+  color: #000;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+  padding: 30px;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  transform: translateX(120%);
+  z-index: 999;
+  border-radius: 12px;
+}
+.modal-panel.open {
+  transform: translateX(0);
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+}
+.modal-logo {
+  height: 150px;
+  margin-bottom: 10px;
+}
+.modal-content h3 {
+  margin-top: 0;
+  color: var(--orange);
+  font-size: 1.4rem;
+}
+#modalFeatures {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+#modalFeatures li {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+#modalFeatures span {
+  font-size: 1.1rem;
+  margin-right: 10px;
+}
+
+.cta-button {
+  margin-top: 20px;
+  background-color: var(--blue);
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.cta-button:hover {
+  background-color: var(--orange);
+}
+
+.social-bar {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+.social-bar a {
+  padding: 12px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--blue);
+  border-bottom: 1px solid #eee;
+  transition: background 0.3s;
+}
+.social-bar a:hover {
+  background: var(--orange);
+  color: #fff;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.icon-button svg {
+  height: 24px;
+  width: 24px;
+}
+.login-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--blue);
+  padding-left: 10px;
+}
+.login-link:hover {
+  color: var(--orange);
+}
+
+.utility-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--blue);
+  transition: color 0.3s;
+}
+.utility-link:hover {
+  color: var(--orange);
+}
+.utility-link svg {
+  height: 20px;
+  width: 20px;
+}
+
+.chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--blue);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 1000;
+  transition: background 0.3s;
+}
+.chat-widget:hover {
+  background-color: var(--orange);
+}
+.chat-modal {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: #fff;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  border-radius: 12px;
+  z-index: 1001;
+}
+.chat-modal.open {
+  display: block;
+}
+.chat-modal-content h3 {
+  margin-top: 0;
+  color: var(--blue);
+}
+.chat-modal-content input,
+.chat-modal-content textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.chat-modal-content button {
+  background: var(--blue);
+  color: #fff;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.chat-modal-content button:hover {
+  background: var(--orange);
+}
+.chat-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: #666;
+}
+
+.hero-subtext {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #f0f0f0;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+.btn-primary, .coming-soon, .cta-button, .chat-modal-content button {
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+  background: var(--blue);
+  color: #fff;
+}
+.btn-primary:hover, .cta-button:hover, .chat-modal-content button:hover {
+  background: var(--orange);
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  border: 2px solid var(--orange);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+.footer-legal {
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+}
+.footer-legal a {
+  margin: 0 12px;
+  color: #888;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.footer-legal a:hover {
+  color: var(--orange);
+}
+body, p, li, input, textarea {
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.product-card p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: 3.6em;
+  line-height: 1.2em;
+}
+
+@media (max-width: 992px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .products {
+    grid-template-columns: 1fr;
+    padding: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+.coming-soon-label {
+  color: red;
+  font-size: 10px;
+  text-align: right;
+  margin-top: 12px;
+}
+.product-card {
+  transition: border 0.3s ease;
+  border: 2px solid transparent;
+}
+.product-card:hover {
+  border: 2px solid var(--orange);
+}
+
+.coming-soon-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background-color: var(--orange);
+  padding: 4px 8px;
+  border-radius: 6px;
+  float: right;
+  margin-top: 12px;
+}
+
+.rotating-hero {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+  width: 100%;
+}
+.hero-slide.active {
+  opacity: 1;
+  position: relative;
+}
+
+.hero-controls {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+.hero-controls button {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.hero-controls button:hover {
+  background: var(--orange);
+}
+
+.hero-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  display: flex;
+  gap: 8px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.dot.active {
+  background-color: var(--orange);
+}
+.dot:hover {
+  background-color: var(--blue);
+}
+
+.rotating-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-slide {
+  opacity: 0;
+  transition: opacity 1s ease;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.hero-slide.active {
+  opacity: 1;
+  position: relative;
+}
+.hero-controls {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+.hero-controls button {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.hero-controls button:hover {
+  background: var(--orange);
+}
+.hero-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  display: flex;
+  gap: 8px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.dot.active {
+  background-color: var(--orange);
+}
+.dot:hover {
+  background-color: var(--blue);
+}
+
+.rotating-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-slide {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.hero-slide.active {
+  transform: translateX(0);
+  opacity: 1;
+  position: relative;
+}
+.hero-controls {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+.hero-controls button {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.hero-controls button:hover {
+  background: var(--orange);
+}
+.hero-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  display: flex;
+  gap: 8px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.dot.active {
+  background-color: var(--orange);
+}
+.dot:hover {
+  background-color: var(--blue);
+}
+
+.rotating-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  padding: 60px 20px;
+}
+.hero-slide {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+.hero-slide.active {
+  position: relative;
+  transform: translateX(0);
+  opacity: 1;
+  z-index: 2;
+}
+.hero-slide.exit-left {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 1;
+}
+.hero-controls {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+.hero-controls button {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.hero-controls button:hover {
+  background: var(--orange);
+}
+.hero-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  display: flex;
+  gap: 8px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.dot.active {
+  background-color: var(--orange);
+}
+.dot:hover {
+  background-color: var(--blue);
+}
+
+.rotating-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  padding: 60px 20px;
+}
+.hero-slide {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transform: translateX(100%);
+  transition: transform 0.6s ease;
+}
+.hero-slide.active {
+  transform: translateX(0);
+  position: relative;
+  z-index: 2;
+}
+.hero-slide.exit-left {
+  transform: translateX(-100%);
+  z-index: 1;
+}
+.hero-controls {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+.hero-controls button {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.hero-controls button:hover {
+  background: var(--orange);
+}
+.hero-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  display: flex;
+  gap: 8px;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.dot.active {
+  background-color: var(--orange);
+}
+.dot:hover {
+  background-color: var(--blue);
+}
+
+.hero-controls {
+  position: absolute;
+  bottom: 16px;
+  right: 10px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.hero-controls .hero-dots {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.hero-controls .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.hero-controls .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ccc;
+  border: none;
+  transition: background-color 0.3s;
+  padding: 0;
+}
+
+.hero-controls .dot.active {
+  background-color: #333;
+}
+
+.hero-controls .dot:hover {
+  background-color: #666;
+}
+
+#chatModal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+#chatModal.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.hero-controls .hero-prev,
+.hero-controls .hero-next {
+  background-color: #ccc;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 0;
+}
+
+.hero-controls .hero-prev:hover,
+.hero-controls .hero-next:hover {
+  background-color: #666;
+  color: white;
+}
+
+.hero-controls .hero-prev,
+.hero-controls .hero-next {
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+
+.hero-controls .hero-prev:hover,
+.hero-controls .hero-next:hover {
+  color: var(--orange);
+}
+
+.hero-controls .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #000;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.hero-controls .dot.active {
+  background-color: var(--orange);
+}
+
+.hero-controls .dot:hover {
+  background-color: var(--orange);
+}
+
+.hero-controls {
+  position: absolute;
+  bottom: 16px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-controls .hero-prev,
+.hero-controls .hero-next {
+  font-size: 22px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-controls .hero-prev:hover,
+.hero-controls .hero-next:hover {
+  color: var(--orange);
+}
+
+.hero-controls .hero-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-controls .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #000;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.hero-controls .dot.active {
+  background-color: var(--orange);
+}
+
+.hero-controls .dot:hover {
+  background-color: var(--orange);
+}
+
+.hero-controls {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-controls {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  gap: 12px;
+}
+
+.hero-controls .hero-prev,
+.hero-controls .hero-next {
+  color: #555;
+}
+
+.hero-controls .dot {
+  background-color: #555;
+}
+
+.hero-controls .hero-prev,
+.hero-controls .hero-next {
+  color: #555;
+}
+
+.hero-controls .hero-prev:hover,
+.hero-controls .hero-next:hover {
+  background: none;
+  color: #0078d4;
+}
+
+.hero-controls .dot {
+  background-color: #555;
+}
+
+.hero-controls .dot.active,
+.hero-controls .dot:hover {
+  background-color: #0078d4;
+}
+
+.hero-controls .hero-prev:hover,
+.hero-controls .hero-next:hover {
+  background: none;
+  color: #28a745;
+}
+
+.hero-controls .dot.active,
+.hero-controls .dot:hover {
+  background-color: #28a745;
+}
+
+.hero-controls .hero-prev:hover,
+.hero-controls .hero-next:hover {
+  background: none;
+  color: #28a745;
+}
+
+.hero-controls .dot:hover {
+  background-color: #28a745;
+}
+
+.hero-controls .dot.active {
+  background-color: #1e7e34;
+}
+
+.hero-controls .hero-prev,
+.hero-controls .hero-next {
+  color: #fff;
+}
+
+.hero-controls .hero-prev:hover,
+.hero-controls .hero-next:hover {
+  color: #28a745;
+}
+
+.hero-controls .dot {
+  background-color: #fff;
+}
+
+.hero-controls .dot.active {
+  background-color: #1e7e34;
+}
+
+.hero-controls .dot:hover {
+  background-color: #28a745;
+}
+
+.hero-controls .hero-prev,
+.hero-controls .hero-next {
+  color: #fff;
+}
+
+.hero-controls .hero-prev:hover,
+.hero-controls .hero-next:hover {
+  color: #f57c00; /* hover orange */
+}
+
+.hero-controls .dot {
+  background-color: #fff;
+}
+
+.hero-controls .dot:hover {
+  background-color: #f57c00; /* hover orange */
+}
+
+.hero-controls .dot.active {
+  background-color: #ffca28; /* amber active */
+}
+
+.hero-controls .hero-prev,
+.hero-controls .hero-next {
+  color: #fff;
+}
+
+.hero-controls .hero-prev:hover,
+.hero-controls .hero-next:hover {
+  color: #ffca28; /* hover amber */
+}
+
+.hero-controls .dot {
+  background-color: #fff;
+}
+
+.hero-controls .dot:hover {
+  background-color: #ffca28; /* hover amber */
+}
+
+.hero-controls .dot.active {
+  background-color: #f57c00; /* active orange */
+}
+
+/* 1. Header spacing and logo size */
+header {
+  padding: 24px 40px;
+}
+header img {
+  height: 50px;
+}
+
+/* 4. Product card CTA label: Coming Soon */
+.coming-soon {
+  font-size: 10px;
+  color: var(--orange);
+  font-style: italic;
+  opacity: 0.85;
+  text-align: right;
+  margin-top: 6px;
+}
+
+/* 5. Social bar icon refinement */
+.social-bar svg {
+  width: 16px;
+  height: 16px;
+}
+.social-bar {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* 6. Footer font spacing improvement */
+footer {
+  font-size: 1rem;
+}
+footer .footer-section {
+  padding: 0 20px;
+}
+
+.modal-panel {
+  top: 95px !important;
+}
+
+.modal-panel {
+  top: 105px !important;
+}
+
+.modal-panel {
+  top: 115px !important;
+}
+</style>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<meta content="#3e5ed3" name="theme-color"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://stricklysoft.com/" rel="canonical"/>
+</head>
+<body>
+<div class="social-bar">
+<a aria-label="LinkedIn" href="https://linkedin.com/company/stricklysoft" target="_blank"><svg height="20" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zm-46.44-341.9C24.5 106.1 0 81.6 0 51.7A53.6 53.6 0 0153.84 0c29.92 0 54.44 24.5 54.44 54.7 0 29.8-24.52 53.4-54.44 53.4zM447.9 448h-92.4V302.4c0-34.7-12.4-58.4-43.3-58.4-23.6 0-37.6 15.8-43.8 31.1-2.3 5.4-2.8 13-2.8 20.6V448h-92.6s1.2-270.1 0-297.9h92.6v42.2c-0.2 0.3-0.5 0.7-0.7 1h0.7v-1c12.3-19 34.3-46.2 83.5-46.2 60.9 0 106.6 39.8 106.6 125.3V448z" fill="#0A66C2"></path></svg></a>
+<a aria-label="Twitter" href="https://twitter.com/stricklysoft" target="_blank"><svg height="20" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M459.4 151.7c.3 4.5.3 9 .3 13.6 0 138.7-105.6 298.7-298.7 298.7A296.3 296.3 0 010 407.1a218.7 218.7 0 00161-44.4 105.2 105.2 0 01-98-72.6c16.1 2.5 32.6 2.5 48.6-1.9a105.1 105.1 0 01-84.1-103.1v-1.3c14.3 7.9 30.6 12.8 48 13.4a105.1 105.1 0 01-46.6-87.2c0-19.1 5.1-36.9 14.3-52.3A298.5 298.5 0 00254.8 147a117.8 117.8 0 01-2.6-24 105.1 105.1 0 01181.6-71.8A208.6 208.6 0 00497.3 53a104.9 104.9 0 01-46.2 57.8 208.8 208.8 0 0060.1-16.3 223.2 223.2 0 01-52.8 54.2z" fill="#1DA1F2"></path></svg></a>
+<a aria-label="Facebook" href="https://facebook.com/stricklysoft" target="_blank"><svg height="20" viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M279.14 288l14.22-92.66h-88.91V127.36c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S268.43 0 238.08 0c-73.2 0-121 44.38-121 124.72v70.62H89.09V288h28v224h92.4V288z" fill="#1877F2"></path></svg></a>
+<a aria-label="Email" href="mailto:info@stricklysoft.com"><svg height="20" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M502.3 190.8l-192-160c-20-16.7-48.6-16.7-68.6 0l-192 160C21.6 202.4 16 217.7 16 233.8V464c0 26.5 21.5 48 48 48h384c26.5 0 48-21.5 48-48V233.8c0-16.1-5.6-31.4-15.7-43zM256 295.4L65.3 144h381.4L256 295.4z" fill="#EA4335"></path></svg></a>
+</div>
+<header>
+<div class="header-left">
+<div class="logo"><img alt="StricklySoft Logo" src="images/StricklySoft_Logo.png"/></div>
+<nav>
+<a aria-label="Home" href="#">Home</a>
+<a aria-label="Products" href="#">Products</a>
+<a aria-label="Services" href="#">Services</a>
+</nav>
+</div>
+<div class="header-right">
+<a aria-label="Search" class="utility-link" href="#">
+      Search
+      <svg height="20" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+<path d="M505 442.7L405.3 343a208 208 0 10-62.4 62.4L442.7 505a21.3 21.3 0 0030.2-30.2zM208 368a160 160 0 11160-160 160.18 160.18 0 01-160 160z" fill="#3e5ed3"></path>
+</svg>
+</a>
+<a aria-label="Cart" class="utility-link" href="#">
+      Cart
+      <svg height="20" viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
+<path d="M528.12 301.319l47.273-208A16 16 0 00560 80H128l-12-48A16 16 0 00100 16H16A16 16 0 000 32v32a16 16 0 0016 16h66.36l61.6 246.4A112 112 0 00249 480h229a112 112 0 0048.12-178.681zM249 432a48 48 0 1148-48 48.06 48.06 0 01-48 48zm229 0a48 48 0 1148-48 48.06 48.06 0 01-48 48z" fill="#3e5ed3"></path>
+</svg>
+</a>
+<a aria-label="Login" class="utility-link" href="#">
+      Sign In
+      <svg height="20" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+<path d="M160 256a128 128 0 11256 0 128 128 0 01-256 0zm352 128h-16a175.44 175.44 0 01-47.29 120H496a16 16 0 0016-16V400a16 16 0 00-16-16zm-82.75 0H82.75A144.53 144.53 0 00192 464h128a144.53 144.53 0 00109.25-80z" fill="#3e5ed3"></path>
+</svg>
+</a>
+</div>
+</header>
+<section class="hero rotating-hero">
+<div class="hero-slide active">
+<h1>Smarter software for faster, leaner operations.</h1>
+<p class="hero-subtext">Trusted tools for modern teams — from small shops to enterprise operations.</p>
+</div>
+<div class="hero-slide">
+<h1>Need something built just for you?</h1>
+<p class="hero-subtext">Whether you're modernizing legacy systems or building from scratch, we deliver scalable, high-performance solutions designed for your exact needs.</p>
+</div>
+<div class="hero-slide">
+<h1>Struggling with code, architecture, or delivery?</h1>
+<p class="hero-subtext">From fractional CTOs to sprint planning, we offer high-impact development consulting that moves the needle.</p>
+</div>
+<div class="hero-controls"><button aria-label="Previous slide" class="hero-prev">‹</button><div aria-label="Hero rotation navigation" class="hero-dots" role="tablist" style="position: static;">
+<button aria-label="Slide 1" class="dot active"></button>
+<button aria-label="Slide 2" class="dot"></button>
+<button aria-label="Slide 3" class="dot"></button>
+</div><button aria-label="Next slide" class="hero-next">›</button></div>
+</section>
+<section class="products">
+<div class="product-card" onclick="openModal('JobMgr')">
+<img alt="JobMgr - SaaS platform for job management and invoicing" src="images/JobMgr.png"/>
+<p>Manage jobs from quote to invoice with tools designed for real-world field operations.</p>
+<div class="coming-soon-label">Coming Soon</div></div>
+<div class="product-card" onclick="openModal('RentalMgr')">
+<img alt="RentalMgr - SaaS tool for rental operations and tenant tracking" src="images/RentalMgr.png"/>
+<p>Track leases, tenants, and maintenance requests in one simple, powerful system.</p>
+<div class="coming-soon-label">Coming Soon</div></div>
+<div class="product-card" onclick="openModal('ChurchMgr')">
+<img alt="ChurchMgr - Manage church events, members, and communication" src="images/ChurchMgr.png"/>
+<p>Coordinate member lists, plan events, and communicate across ministries seamlessly.</p>
+<div class="coming-soon-label">Coming Soon</div></div>
+<div class="product-card" onclick="openModal('GroomMgr')">
+<img alt="GroomMgr - Business management for pet grooming" src="images/GroomMgr.png"/>
+<p>Organize appointments, pet profiles, and reports—all from one dashboard.</p>
+<div class="coming-soon-label">Coming Soon</div></div>
+<div class="product-card" onclick="openModal('ProcureMgr')">
+<img alt="ProcureMgr - Purchasing and supplier management platform" src="images/ProcureMgr.png"/>
+<p>Simplify purchasing, approval workflows, and supplier tracking from start to finish.</p>
+<div class="coming-soon-label">Coming Soon</div></div>
+<div class="product-card" onclick="openModal('GymMgr')">
+<img alt="GymMgr - Fitness center operations and class scheduling" src="images/GymMgr.png"/>
+<p>Manage fitness classes, members, and performance data with one unified gym system.</p>
+<div class="coming-soon-label">Coming Soon</div></div>
+</section>
+<div class="modal-panel" id="productModal">
+<button class="modal-close" id="modalCloseButton" onclick="closeModal()" style="cursor: pointer;">✕</button>
+<div class="modal-content">
+<img alt="Product Logo" class="modal-logo" id="modalImage" src=""/>
+<h3 id="modalTitle" style="color: var(--orange); font-size: 1.4rem;"></h3>
+<p class="modal-subheadline" id="modalSubheadline" style="font-size: 0.95rem; color: #555; margin-top: 10px; margin-bottom: 15px;"></p>
+<ul id="modalFeatures"></ul>
+<button class="cta-button">Request Early Access</button>
+</div>
+</div>
+<footer>
+<div class="footer-section">
+<h4>Company</h4>
+<ul>
+<li><a aria-label="About" href="#">About</a></li>
+<li><a aria-label="Press" href="#">Press</a></li>
+<li><a aria-label="Contact" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>Support</h4>
+<ul>
+<li><a aria-label="Help Center" href="#">Help Center</a></li>
+<li><a aria-label="Documentation" href="#">Documentation</a></li>
+<li><a aria-label="Status" href="#">Status</a></li>
+</ul>
+</div>
+<div class="footer-section">
+</div>
+<p>© 2025 StricklySoft. All rights reserved.</p>
+<div class="footer-legal">
+<a aria-label="Privacy" href="#">Privacy</a>
+<a aria-label="Terms" href="#">Terms</a>
+<a aria-label="Accessibility" href="#">Accessibility</a>
+<a aria-label="Sitemap" href="#">Sitemap</a>
+</div>
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const closeBtn = document.getElementById("modalCloseButton");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeModal);
+  }
+
+  // Modal logic
+  const modal = document.getElementById("productModal");
+  const modalImage = document.getElementById("modalImage");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalFeatures = document.getElementById("modalFeatures");
+  let currentProduct = null;
+
+  const modalDescriptions = {
+    JobMgr: {
+      logo: "images/JobMgr.png",
+      description: "Manage jobs from quote to invoice with tools designed for real-world field operations.",
+      subheadline: "Simplifying Job Management",
+      features: [
+        { icon: "🧾", label: "Quotes & Invoicing" },
+        { icon: "📦", label: "Line-item Tracking" },
+        { icon: "📅", label: "Scheduling Tools" }
+      ]
+    },
+    RentalMgr: {
+      logo: "images/RentalMgr.png",
+      description: "Track leases, tenants, and maintenance requests in one simple, powerful system.",
+      subheadline: "Simplifying Rental Operations",
+      features: [
+        { icon: "📄", label: "Lease Management" },
+        { icon: "🏠", label: "Tenant Profiles" },
+        { icon: "📅", label: "Maintenance Scheduling" }
+      ]
+    },
+    ChurchMgr: {
+      logo: "images/ChurchMgr.png",
+      description: "Coordinate member lists, plan events, and communicate across ministries seamlessly.",
+      subheadline: "Church Activities Simplified",
+      features: [
+        { icon: "📅", label: "Event Planning" },
+        { icon: "🔔", label: "Notifications" },
+        { icon: "🏠", label: "Member Directory" }
+      ]
+    },
+    GroomMgr: {
+      logo: "images/GroomMgr.png",
+      description: "Organize appointments, pet profiles, and reports—all from one dashboard.",
+      subheadline: "Simplified Pet Grooming",
+      features: [
+        { icon: "📅", label: "Appointment Booking" },
+        { icon: "🐶", label: "Pet Profiles" },
+        { icon: "📄", label: "Service Reports" }
+      ]
+    },
+    ProcureMgr: {
+      logo: "images/ProcureMgr.png",
+      description: "Simplify purchasing, approval workflows, and supplier tracking from start to finish.",
+      subheadline: "Purchasing Made Easy",
+      features: [
+        { icon: "📦", label: "Supplier Management" },
+        { icon: "🧾", label: "Approval Flows" },
+        { icon: "📄", label: "Order History" }
+      ]
+    },
+    GymMgr: {
+      logo: "images/GymMgr.png",
+      description: "Manage fitness classes, members, and performance data with one unified gym system.",
+      subheadline: "Performance-Focused Fitness",
+      features: [
+        { icon: "📅", label: "Class Scheduling" },
+        { icon: "💪", label: "Member Tracking" },
+        { icon: "📈", label: "Progress Reports" }
+      ]
+    }
+  };
+
+  function openModal(product) {
+    const data = modalDescriptions[product];
+    if (!data) return;
+    modal.classList.add("open");
+    currentProduct = product;
+    modalImage.src = data.logo;
+    modalTitle.textContent = data.description;
+    document.getElementById("modalSubheadline").textContent = data.subheadline;
+    modalFeatures.innerHTML = data.features.map(f =>
+      `<li><span>${f.icon}</span> ${f.label}</li>`
+    ).join("");
+  };
+
+  function closeModal() {
+    modalRecentlyClosed = true;
+    setTimeout(() => modalRecentlyClosed = false, 500);
+    modal.classList.remove("open");
+    currentProduct = null;
+  };
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    const product = card.getAttribute("onclick").match(/'(.*?)'/)[1];
+    card.addEventListener("click", () => {
+      if (modal.classList.contains("open") && currentProduct === product) {
+        closeModal();
+      } else {
+        openModal(product);
+      }
+    });
+    const hoverTimers = {};
+    card.addEventListener("mouseenter", () => {
+      hoverTimers[product] = setTimeout(() => {
+        if (!modal.classList.contains("open") || currentProduct !== product) {
+          openModal(product);
+        }
+      }, 2000);
+    });
+    card.addEventListener("mouseleave", () => {
+      clearTimeout(hoverTimers[product]);
+    });
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && modal.classList.contains("open")) {
+      closeModal();
+    }
+  });
+
+  // Chat modal logic
+  window.openChatModal = function () {
+    const chat = document.getElementById("chatModal");
+    chat.classList.toggle("open");
+  };
+
+  window.closeChatModal = function () {
+    document.getElementById("chatModal").classList.remove("open");
+  };
+
+  // Hero rotation logic
+  const heroSlides = document.querySelectorAll('.hero-slide');
+  const heroDots = document.querySelectorAll('.dot');
+  const nextBtn = document.querySelector('.hero-next');
+  const prevBtn = document.querySelector('.hero-prev');
+  let currentHero = 0;
+
+  function showHero(index) {
+    if (index === currentHero) return;
+    heroSlides[currentHero].classList.remove('active');
+    heroSlides[currentHero].classList.add('exit-left');
+    heroSlides[index].classList.remove('exit-left');
+    heroSlides[index].classList.add('active');
+    heroDots.forEach(dot => dot.classList.remove('active'));
+    heroDots[index].classList.add('active');
+    setTimeout(() => {
+      heroSlides[currentHero].classList.remove('exit-left');
+      currentHero = index;
+    }, 600);
+  }
+
+  function nextHero() {
+    const nextIndex = (currentHero + 1) % heroSlides.length;
+    showHero(nextIndex);
+  }
+
+  function prevHero() {
+    const prevIndex = (currentHero - 1 + heroSlides.length) % heroSlides.length;
+    showHero(prevIndex);
+  }
+
+  let heroInterval = setInterval(nextHero, 10000);
+  if (nextBtn && prevBtn) {
+    nextBtn.addEventListener('click', () => {
+      clearInterval(heroInterval);
+      nextHero();
+      heroInterval = setInterval(nextHero, 10000);
+    });
+
+    prevBtn.addEventListener('click', () => {
+      clearInterval(heroInterval);
+      prevHero();
+      heroInterval = setInterval(nextHero, 10000);
+    });
+  }
+
+  heroDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      clearInterval(heroInterval);
+      showHero(index);
+      heroInterval = setInterval(nextHero, 10000);
+    });
+  });
+});
+
+window.openModal = openModal;
+window.closeModal = closeModal;</script>
+<div class="chat-widget" onclick="openChatModal()">
+<span>Let’s chat</span>
+<svg height="18" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 32C114.62 32 0 125.1 0 240c0 49.6 24.2 94.9 64.5 130.3C54.2 430.3 9.4 467.7 9.4 467.7c-5.4 4.5-2.4 13.1 4.8 13.1 61.1 0 99.8-22.3 115.6-32.6C173.3 468.5 213.5 480 256 480c141.4 0 256-93.1 256-208S397.4 32 256 32z" fill="#fff"></path></svg>
+</div>
+<div class="chat-modal" id="chatModal">
+<div class="chat-modal-content">
+<span class="chat-close" onclick="closeChatModal()">✕</span>
+<h3>Start a conversation</h3>
+<p>Have questions? Reach out and we'll get back to you soon.</p>
+<form aria-label="Contact form" lang="en">
+<input placeholder="Your name" required="" type="text"/>
+<input placeholder="Your email" required="" type="email"/>
+<textarea placeholder="Your message" required="" rows="4"></textarea>
+<button type="submit">Send Message</button>
+</form>
+</div>
+</div>
+</body>
+</html>
