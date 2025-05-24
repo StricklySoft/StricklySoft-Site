@@ -1216,7 +1216,6 @@ footer .footer-section {
 <meta content="#3e5ed3" name="theme-color"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://stricklysoft.com/" rel="canonical"/>
-
 <style>
   .desktop-nav a {
     margin: 0 15px;
@@ -1262,8 +1261,46 @@ footer .footer-section {
     var nav = document.getElementById("mobileNav");
     nav.classList.toggle("active");
   }
+
+function toggleMenu() {
+  document.getElementById('mobileNav').classList.toggle('active');
+}
 </script>
-</head>
+<style>
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.hamburger div {
+  background: black;
+  height: 3px;
+  margin: 4px 0;
+  width: 25px;
+}
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 1rem;
+}
+.mobile-nav a {
+  color: #000;
+  text-decoration: none;
+  margin: 0.5rem 0;
+}
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .hamburger {
+    display: flex !important;
+  }
+  .mobile-nav.active {
+    display: flex !important;
+  }
+}
+</style></head>
 <body>
 <div class="social-bar">
 <a aria-label="LinkedIn" href="https://linkedin.com/company/stricklysoft" target="_blank"><svg height="20" viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M100.28 448H7.4V148.9h92.88zm-46.44-341.9C24.5 106.1 0 81.6 0 51.7A53.6 53.6 0 0153.84 0c29.92 0 54.44 24.5 54.44 54.7 0 29.8-24.52 53.4-54.44 53.4zM447.9 448h-92.4V302.4c0-34.7-12.4-58.4-43.3-58.4-23.6 0-37.6 15.8-43.8 31.1-2.3 5.4-2.8 13-2.8 20.6V448h-92.6s1.2-270.1 0-297.9h92.6v42.2c-0.2 0.3-0.5 0.7-0.7 1h0.7v-1c12.3-19 34.3-46.2 83.5-46.2 60.9 0 106.6 39.8 106.6 125.3V448z" fill="#0A66C2"></path></svg></a>
@@ -1271,58 +1308,7 @@ footer .footer-section {
 <a aria-label="Facebook" href="https://www.facebook.com/profile.php?id=61576375719325" target="_blank"><svg height="20" viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M279.14 288l14.22-92.66h-88.91V127.36c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S268.43 0 238.08 0c-73.2 0-121 44.38-121 124.72v70.62H89.09V288h28v224h92.4V288z" fill="#1877F2"></path></svg></a>
 <a aria-label="Email" href="mailto:info@stricklysoft.com"><svg height="20" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M502.3 190.8l-192-160c-20-16.7-48.6-16.7-68.6 0l-192 160C21.6 202.4 16 217.7 16 233.8V464c0 26.5 21.5 48 48 48h384c26.5 0 48-21.5 48-48V233.8c0-16.1-5.6-31.4-15.7-43zM256 295.4L65.3 144h381.4L256 295.4z" fill="#EA4335"></path></svg></a>
 </div>
-<header>
-<div class="header-left">
-    <div class="logo">
-        <a href="/index.html"><img src="/images/StricklySoft_Logo.png" alt="StricklySoft Logo" style="height:40px;"></a>
-    </div>
-    <nav class="desktop-nav">
-        <a href="/index.html">Home</a>
-        <a href="/index.html">Status</a>
-        <a href="/index.html">Privacy</a>
-        <a href="/index.html">Terms</a>
-        <a href="/index.html">Accessibility</a>
-    </nav>
-    <div class="hamburger" onclick="toggleMenu()">
-        <div></div><div></div><div></div>
-    </div>
-</div>
-<div id="mobileNav" class="mobile-nav">
-    <a href="/index.html">Home</a>
-    <a href="/index.html">Status</a>
-    <a href="/index.html">Privacy</a>
-    <a href="/index.html">Terms</a>
-    <a href="/index.html">Accessibility</a>
-</div>
-
-<div class="header-left"></div>
-<nav>
-<a aria-label="Home" href="#">Home</a>
-<a aria-label="Products" href="#">Products</a>
-<a aria-label="Services" href="#">Services</a>
-</nav>
-</div>
-<div class="header-right">
-<a aria-label="Search" class="utility-link" href="#">
-      Search
-      <svg height="20" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-<path d="M505 442.7L405.3 343a208 208 0 10-62.4 62.4L442.7 505a21.3 21.3 0 0030.2-30.2zM208 368a160 160 0 11160-160 160.18 160.18 0 01-160 160z" fill="#3e5ed3"></path>
-</svg>
-</a>
-<a aria-label="Cart" class="utility-link" href="#">
-      Cart
-      <svg height="20" viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg">
-<path d="M528.12 301.319l47.273-208A16 16 0 00560 80H128l-12-48A16 16 0 00100 16H16A16 16 0 000 32v32a16 16 0 0016 16h66.36l61.6 246.4A112 112 0 00249 480h229a112 112 0 0048.12-178.681zM249 432a48 48 0 1148-48 48.06 48.06 0 01-48 48zm229 0a48 48 0 1148-48 48.06 48.06 0 01-48 48z" fill="#3e5ed3"></path>
-</svg>
-</a>
-<a aria-label="Login" class="utility-link" href="#">
-      Sign In
-      <svg height="20" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-<path d="M160 256a128 128 0 11256 0 128 128 0 01-256 0zm352 128h-16a175.44 175.44 0 01-47.29 120H496a16 16 0 0016-16V400a16 16 0 00-16-16zm-82.75 0H82.75A144.53 144.53 0 00192 464h128a144.53 144.53 0 00109.25-80z" fill="#3e5ed3"></path>
-</svg>
-</a>
-</div>
-</header>
+<header><div class="header-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><div class="logo"><a href="images/StricklySoft_Logo.png"><img alt="StricklySoft Logo" src="/images/StricklySoft_Logo.png" style="height:40px;"/></a></div><div class="hamburger" onclick="toggleMenu()"><div></div><div></div><div></div></div></div><nav class="desktop-nav"><a href="#">Home</a><a href="#">Products</a><a href="#">Services</a></nav><div class="header-right desktop-nav"><a class="utility-link" href="#">Search</a><a class="utility-link" href="#">Cart</a><a class="utility-link" href="#">Sign In</a></div><div class="mobile-nav" id="mobileNav"><a href="#">Home</a><a href="#">Products</a><a href="#">Services</a><a href="#">Search</a><a href="#">Cart</a><a href="#">Sign In</a></div></header>
 <section class="hero rotating-hero">
 <div class="hero-slide active">
 <h1>Smarter software for faster, leaner operations.</h1>
@@ -1606,8 +1592,6 @@ window.closeModal = closeModal;</script>
 <span class="chat-close" onclick="closeChatModal()">✕</span>
 <h3>Start a conversation</h3>
 <p>Have questions? Reach out and we'll get back to you soon.</p>
-
-
 <style>
   .contact-form {
     background: #f9f9f9;
@@ -1683,9 +1667,7 @@ window.closeModal = closeModal;</script>
   }
 }
 </style>
-
 <div class="contact-form-wrapper">
-  
 <style>
   .contact-form {
     background: #f9f9f9;
@@ -1761,19 +1743,17 @@ window.closeModal = closeModal;</script>
   }
 }
 </style>
-
 <div class="contact-form-wrapper">
-  <form class="contact-form" id="contact-form">
-    <input type="text" name="name" placeholder="Your name" required>
-    <input type="email" name="email" placeholder="Your email" required>
-    <textarea name="message" placeholder="Your message" required rows="4"></textarea>
-    <button type="submit">Send Message</button>
-    <div class="confirmation-message" id="confirmation">
+<form class="contact-form" id="contact-form">
+<input name="name" placeholder="Your name" required="" type="text"/>
+<input name="email" placeholder="Your email" required="" type="email"/>
+<textarea name="message" placeholder="Your message" required="" rows="4"></textarea>
+<button type="submit">Send Message</button>
+<div class="confirmation-message" id="confirmation">
       ✅ Thanks for your message! We'll get back to you soon.
     </div>
-  </form>
+</form>
 </div>
-
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contact-form");
@@ -1805,9 +1785,7 @@ window.closeModal = closeModal;</script>
     });
   });
 </script>
-
 </div>
-
 <script>
   function showConfirmation() {
     setTimeout(() => {
@@ -1815,8 +1793,6 @@ window.closeModal = closeModal;</script>
     }, 300);
   }
 </script>
-
-
 </div>
 </div>
 </body>
