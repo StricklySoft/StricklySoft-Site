@@ -1216,46 +1216,6 @@ footer .footer-section {
 <meta content="#3e5ed3" name="theme-color"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://stricklysoft.com/" rel="canonical"/>
-<style>
-  .desktop-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: white;
-  }
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-  }
-  .hamburger div {
-    background: white;
-    height: 3px;
-    margin: 4px 0;
-    width: 25px;
-  }
-  .mobile-nav {
-    display: none;
-    flex-direction: column;
-    background-color: #192436;
-    padding: 1rem;
-  }
-  .mobile-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0.5rem 0;
-  }
-  @media (max-width: 768px) {
-    .desktop-nav {
-      display: none;
-    }
-    .hamburger {
-      display: flex;
-    }
-    .mobile-nav.active {
-      display: flex;
-    }
-  }
-</style>
 <script>
   function toggleMenu() {
     var nav = document.getElementById("mobileNav");
@@ -1267,28 +1227,20 @@ function toggleMenu() {
 }
 </script>
 <style>
+/* Default (desktop-first): show desktop nav, hide mobile nav and hamburger */
+.desktop-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
 .hamburger {
   display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-.hamburger div {
-  background: black;
-  height: 3px;
-  margin: 4px 0;
-  width: 25px;
 }
 .mobile-nav {
   display: none;
-  flex-direction: column;
-  background-color: #fff;
-  padding: 1rem;
 }
-.mobile-nav a {
-  color: #000;
-  text-decoration: none;
-  margin: 0.5rem 0;
-}
+
+/* On small screens: hide desktop nav, show hamburger */
 @media (max-width: 768px) {
   .desktop-nav {
     display: none !important;
@@ -1298,6 +1250,45 @@ function toggleMenu() {
   }
   .mobile-nav.active {
     display: flex !important;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 1rem;
+  }
+}
+</style><style>
+/* Desktop first */
+.desktop-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.hamburger {
+  display: none;
+}
+.mobile-nav {
+  display: none;
+}
+
+/* Mobile override */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .hamburger {
+    display: flex !important;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .hamburger div {
+    background: #000;
+    height: 3px;
+    width: 25px;
+  }
+  .mobile-nav.active {
+    display: flex !important;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 1rem;
   }
 }
 </style></head>
@@ -1308,7 +1299,7 @@ function toggleMenu() {
 <a aria-label="Facebook" href="https://www.facebook.com/profile.php?id=61576375719325" target="_blank"><svg height="20" viewbox="0 0 320 512" xmlns="http://www.w3.org/2000/svg"><path d="M279.14 288l14.22-92.66h-88.91V127.36c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S268.43 0 238.08 0c-73.2 0-121 44.38-121 124.72v70.62H89.09V288h28v224h92.4V288z" fill="#1877F2"></path></svg></a>
 <a aria-label="Email" href="mailto:info@stricklysoft.com"><svg height="20" viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M502.3 190.8l-192-160c-20-16.7-48.6-16.7-68.6 0l-192 160C21.6 202.4 16 217.7 16 233.8V464c0 26.5 21.5 48 48 48h384c26.5 0 48-21.5 48-48V233.8c0-16.1-5.6-31.4-15.7-43zM256 295.4L65.3 144h381.4L256 295.4z" fill="#EA4335"></path></svg></a>
 </div>
-<header><div class="header-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><div class="logo"><a href="images/StricklySoft_Logo.png"><img alt="StricklySoft Logo" src="/images/StricklySoft_Logo.png" style="height:40px;"/></a></div><div class="hamburger" onclick="toggleMenu()"><div></div><div></div><div></div></div></div><nav class="desktop-nav"><a href="#">Home</a><a href="#">Products</a><a href="#">Services</a></nav><div class="header-right desktop-nav"><a class="utility-link" href="#">Search</a><a class="utility-link" href="#">Cart</a><a class="utility-link" href="#">Sign In</a></div><div class="mobile-nav" id="mobileNav"><a href="#">Home</a><a href="#">Products</a><a href="#">Services</a><a href="#">Search</a><a href="#">Cart</a><a href="#">Sign In</a></div></header>
+<header><div class="header-top" style="display: flex; justify-content: space-between; align-items: center; width: 100%;"><div style="display: flex; align-items: center; gap: 20px;"><div class="logo"><a href="/index.html"><img alt="StricklySoft Logo" src="/images/StricklySoft_Logo.png" style="height:40px;"/></a></div><nav class="desktop-nav" style="margin-left: 20px;"><a href="#">Home</a><a href="#">Products</a><a href="#">Services</a></nav></div><div class="hamburger" onclick="toggleMenu()"><div></div><div></div><div></div></div></div><div class="header-right desktop-nav"><a aria-label="Search" class="utility-link" href="#"><span style="font-size: 1.1rem; margin-right: 6px;">🔍</span>Search</a><a aria-label="Cart" class="utility-link" href="#"><span style="font-size: 1.1rem; margin-right: 6px;">🛒</span>Cart</a><a aria-label="Sign In" class="utility-link" href="#"><span style="font-size: 1.1rem; margin-right: 6px;">🔑</span><span style="white-space: nowrap;">Sign In</span></a></div><div class="mobile-nav" id="mobileNav"><a href="#" style="display: flex; align-items: center; gap: 10px; font-size: 1rem; padding: 8px 0; text-decoration: none;"><span style="font-size: 1.2rem; display: inline-block; width: 24px; text-align: center;">🏠</span>Home</a><a href="#" style="display: flex; align-items: center; gap: 10px; font-size: 1rem; padding: 8px 0; text-decoration: none;"><span style="font-size: 1.2rem; display: inline-block; width: 24px; text-align: center;">📦</span>Products</a><a href="#" style="display: flex; align-items: center; gap: 10px; font-size: 1rem; padding: 8px 0; text-decoration: none;"><span style="font-size: 1.2rem; display: inline-block; width: 24px; text-align: center;">🛠</span>Services</a><a href="#" style="display: flex; align-items: center; gap: 10px; font-size: 1rem; padding: 8px 0; text-decoration: none;"><span style="font-size: 1.2rem; display: inline-block; width: 24px; text-align: center;">🔍</span>Search</a><a href="#" style="display: flex; align-items: center; gap: 10px; font-size: 1rem; padding: 8px 0; text-decoration: none;"><span style="font-size: 1.2rem; display: inline-block; width: 24px; text-align: center;">🛒</span>Cart</a><a href="#" style="display: flex; align-items: center; gap: 10px; font-size: 1rem; padding: 8px 0; text-decoration: none;"><span style="font-size: 1.2rem; display: inline-block; width: 24px; text-align: center;">🔑</span>Sign In</a></div></header>
 <section class="hero rotating-hero">
 <div class="hero-slide active">
 <h1>Smarter software for faster, leaner operations.</h1>
